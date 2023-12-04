@@ -54,6 +54,7 @@ const NavBar = () => {
               <DropdownMenu.Root>
                 <DropdownMenu.Trigger>
                   <Avatar
+                    referrerPolicy="no-referrer"
                     src={session.user!.image!}
                     fallback="?"
                     size="2"
