@@ -5,6 +5,7 @@ import React from "react";
 import { IoIosBug } from "react-icons/io";
 import classnames from "classnames";
 import { useSession } from "next-auth/react";
+import Skeleton from "@/app/components/Skeleton";
 import {
   Avatar,
   Box,
@@ -62,10 +63,14 @@ const NavLinks = () => {
 const AuthStatus = () => {
   const { status, data: session } = useSession();
 
-  if (status === "loading") return null;
+  if (status === "loading") return <Skeleton width="3rem" />;
 
   if (status === "authenticated")
-    return <Link className="nav-link" href="/api/auth/signin">Login</Link>;
+    return (
+      <Link className="nav-link" href="/api/auth/signin">
+        Login
+      </Link>
+    );
 
   return (
     <Box>
