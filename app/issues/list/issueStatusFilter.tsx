@@ -12,12 +12,14 @@ const statuses: { label: string; value?: Status }[] = [
 ];
 
 const issueStatusFilter = () => {
-  const router = useRouter()
+  const router = useRouter();
   return (
-    <Select.Root onValueChange={(status) => {
-      const query = status && status !== 'All' ? `?status=${status}` : ''
-      router.push(`/issues/list${query}`)
-    }}>
+    <Select.Root
+      onValueChange={(status) => {
+        const query = status && status !== "All" ? `?status=${status}` : "";
+        router.push(`/issues/list${query}`);
+      }}
+    >
       <Select.Trigger placeholder="Filter by status..."></Select.Trigger>
       <Select.Content>
         <Select.Group>
