@@ -11,7 +11,7 @@ const statuses: { label: string; value?: Status }[] = [
   { label: "In Progress", value: "IN_PROGRESS" },
 ];
 
-const issueStatusFilter = () => {
+const IssueStatusFilter = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   return (
@@ -44,4 +44,4 @@ const issueStatusFilter = () => {
   );
 };
 
-export default issueStatusFilter;
+export default IssueStatusFilter;
