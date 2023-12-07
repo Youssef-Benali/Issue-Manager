@@ -1,19 +1,22 @@
-'use client'
+"use client";
 import { Card } from "@radix-ui/themes";
 import React from "react";
 import { ResponsiveContainer, BarChart, XAxis, YAxis, Bar } from "recharts";
 
-interface Props {
+interface IssueStatus {
   open: number;
   inProgress: number;
   closed: number;
 }
+interface Props {
+  issueStatus: IssueStatus;
+}
 
-const IssueChart = ({ open, inProgress, closed }: Props) => {
+const IssueChart = ({ issueStatus }: Props) => {
   const data = [
-    { label: "Open", value: open },
-    { label: "In Progress", value: inProgress },
-    { label: "Closed", value: closed },
+    { label: "Open", value: issueStatus.open },
+    { label: "In Progress", value: issueStatus.inProgress },
+    { label: "Closed", value: issueStatus.closed },
   ];
 
   return (
@@ -22,7 +25,12 @@ const IssueChart = ({ open, inProgress, closed }: Props) => {
         <BarChart data={data}>
           <XAxis dataKey="label" />
           <YAxis />
-          <Bar dataKey="value" barSize={60} style={{fill: 'var(--violet-9)'}}/>
+          <Bar
+            dataKey="value"
+            barSize={60}
+            // The value of fill can be found by inspecting the div element that pass the theme
+            style={{ fill: "var(--violet-9)" }}
+          />
         </BarChart>
       </ResponsiveContainer>
     </Card>
