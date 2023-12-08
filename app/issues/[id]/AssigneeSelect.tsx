@@ -27,7 +27,7 @@ const AssigneeSelect = ({ issue }: { issue: Issue }) => {
     <>
       <Select.Root onValueChange={assignIssue}>
         <Select.Trigger placeholder="Assign..." />
-        <Select.Content>
+        <Select.Content position="popper">
           <Select.Group>
             <Select.Label>Suggestions</Select.Label>
             <Select.Item value="Unassigned">Unassigned</Select.Item>
