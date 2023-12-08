@@ -1,6 +1,6 @@
 import { IssueStatusBadge } from "@/app/components";
-import { Heading, Flex, Card, Text, Box } from "@radix-ui/themes";
 import { Issue } from "@prisma/client";
+import { Box, Card, Flex, Heading, Text } from "@radix-ui/themes";
 import ReactMarkDown from "react-markdown";
 import AssigneeSelect from "./AssigneeSelect";
 
@@ -11,7 +11,9 @@ const IssueDetails = ({ issue }: { issue: Issue }) => {
       <Flex className="space-x-3 my-2" justify="between">
         <Flex align="center" gap="4">
           <IssueStatusBadge status={issue.status} />
-          <Text className="text-xs md:text-sm">{issue.createdAt.toDateString()}</Text>
+          <Text className="text-xs md:text-sm">
+            {issue.createdAt.toDateString()}
+          </Text>
         </Flex>
         <Box>
           <AssigneeSelect issue={issue} />

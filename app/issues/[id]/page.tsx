@@ -1,6 +1,7 @@
 import authOptions from "@/app/auth/authOptions";
 import prisma from "@/prisma/client";
-import { Box, Flex, Grid } from "@radix-ui/themes";
+import { Box, Button, Flex, Grid } from "@radix-ui/themes";
+import Link from "next/link";
 import { getServerSession } from "next-auth";
 import { notFound } from "next/navigation";
 import { cache } from "react";
@@ -35,8 +36,18 @@ const IssueDetailPage = async ({ params }: Props) => {
           <Flex width="max-content" direction="row" gap="4">
             <EditIssueButton issueId={issue.id} />
             <DeleteIssueButton issueId={issue.id} />
+            <Link href="/issues/list">
+              <Button color="gray" variant="soft">
+                Back to Issues
+              </Button>
+            </Link>
           </Flex>
         </Box>
+      )}
+      {!session && (
+        <Button className="w-fit" color="gray" variant="soft">
+          <Link href="/issues/list">Back to Issues</Link>
+        </Button>
       )}
     </Grid>
   );

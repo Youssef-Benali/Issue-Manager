@@ -1,10 +1,4 @@
 "use client";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import React from "react";
-import { IoIosBug } from "react-icons/io";
-import classnames from "classnames";
-import { useSession } from "next-auth/react";
 import Skeleton from "@/app/components/Skeleton";
 import {
   Avatar,
@@ -14,6 +8,11 @@ import {
   Flex,
   Text,
 } from "@radix-ui/themes";
+import classnames from "classnames";
+import { signOut, useSession } from "next-auth/react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { IoIosBug } from "react-icons/io";
 
 const NavBar = () => {
   return (
@@ -91,8 +90,8 @@ const AuthStatus = () => {
             {/* @ts-ignore */}
             <Text>{session!.user.email}</Text>
           </DropdownMenu.Label>
-          <DropdownMenu.Item>
-            <Link href="/api/auth/signout">Log out</Link>
+          <DropdownMenu.Item className="!cursor-pointer" onClick={() => signOut()}>
+            Log out
           </DropdownMenu.Item>
         </DropdownMenu.Content>
       </DropdownMenu.Root>
