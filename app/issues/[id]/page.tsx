@@ -32,17 +32,15 @@ const IssueDetailPage = async ({ params }: Props) => {
         <IssueDetails issue={issue} />
       </Box>
       {session && (
-        <Box>
-          <Flex width="max-content" direction="row" gap="4">
-            <EditIssueButton issueId={issue.id} />
-            <DeleteIssueButton issueId={issue.id} />
-            <Link href="/issues/list">
-              <Button color="gray" variant="soft">
-                Back to Issues
-              </Button>
-            </Link>
-          </Flex>
-        </Box>
+        <Grid columns={{ initial: "2", xs: "3" }} width="max-content" gap="4">
+          <EditIssueButton issueId={issue.id} />
+          <DeleteIssueButton issueId={issue.id} />
+          <Link href="/issues/list">
+            <Button color="gray" variant="soft">
+              Back to Issues
+            </Button>
+          </Link>
+        </Grid>
       )}
       {!session && (
         <Button className="w-fit" color="gray" variant="soft">

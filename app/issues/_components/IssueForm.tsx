@@ -16,8 +16,14 @@ import { SimpleMdeReact } from "react-simplemde-editor";
 // Generate an interface based on a zod schema (infer a type based on a zod schema)
 type IssueFormData = z.infer<typeof issueSchema>;
 
-const IssueForm = ({ issue }: { issue?: Issue }) => {
+interface Props {
+  params: { id: string };
+  issue?: Issue;
+}
+
+const IssueForm = ({ issue, params }: Props) => {
   const router = useRouter();
+
   const {
     register,
     control,
@@ -71,7 +77,13 @@ const IssueForm = ({ issue }: { issue?: Issue }) => {
           {issue ? "Update Issue" : "Submit New Issue"}
           {isSubmitting && <Spinner />}
         </Button>
-        <Button onClick={() => router.push("/issues/list")} color="red">
+        <Button
+          onClick={(e) => {
+            e.preventDefault();
+            router.push(`/issues/${params?.id || "list"}`);
+          }}
+          color="red"
+        >
           {issue ? "Cancel update" : "Cancel"}
         </Button>
       </form>
