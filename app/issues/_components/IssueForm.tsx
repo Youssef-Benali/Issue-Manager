@@ -67,9 +67,12 @@ const IssueForm = ({ issue }: { issue?: Issue }) => {
           )}
         />
         <ErrorMessage>{errors.description?.message}</ErrorMessage>
-        <Button disabled={isSubmitting}>
+        <Button mr="4" disabled={isSubmitting}>
           {issue ? "Update Issue" : "Submit New Issue"}
           {isSubmitting && <Spinner />}
+        </Button>
+        <Button onClick={() => router.push("/issues/list")} color="red">
+          {issue ? "Cancel update" : "Cancel"}
         </Button>
       </form>
     </div>
