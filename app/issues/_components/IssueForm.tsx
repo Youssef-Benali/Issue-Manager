@@ -17,7 +17,7 @@ import { SimpleMdeReact } from "react-simplemde-editor";
 type IssueFormData = z.infer<typeof issueSchema>;
 
 interface Props {
-  params: { id: string };
+  params?: { id: string };
   issue?: Issue;
 }
 
