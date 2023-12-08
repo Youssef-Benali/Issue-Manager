@@ -49,7 +49,9 @@ const DeleteIssueButton = ({ issueId }: { issueId: number }) => {
               </Button>
             </AlertDialog.Action>
             <AlertDialog.Cancel>
-              <Button variant="soft" color="gray">
+              {/* variant="soft" color="gray" */}
+              {/* style={{background: "#30004010", color:"#0400119c"}} */}
+              <Button className="!bg-cancel-softgray-button !text-cancel-text-button hover:!bg-cancel-button-hover ">
                 Cancel
               </Button>
             </AlertDialog.Cancel>
