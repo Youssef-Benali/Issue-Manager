@@ -1,8 +1,8 @@
 import authOptions from "@/app/auth/authOptions";
 import prisma from "@/prisma/client";
-import { Box, Button, Flex, Grid } from "@radix-ui/themes";
-import Link from "next/link";
+import { Box, Button, Grid } from "@radix-ui/themes";
 import { getServerSession } from "next-auth";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { cache } from "react";
 import DeleteIssueButton from "./DeleteIssueButton";
@@ -37,14 +37,14 @@ const IssueDetailPage = async ({ params }: Props) => {
           <DeleteIssueButton issueId={issue.id} />
           <Link href="/issues/list">
             <Button color="gray" variant="soft">
-              Back to Issues
+              Go to Issues
             </Button>
           </Link>
         </Grid>
       )}
       {!session && (
         <Button className="w-fit" color="gray" variant="soft">
-          <Link href="/issues/list">Back to Issues</Link>
+          <Link href="/issues/list">Go to Issues</Link>
         </Button>
       )}
     </Grid>

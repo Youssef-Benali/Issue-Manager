@@ -3,6 +3,7 @@ import { Issue } from "@prisma/client";
 import { Box, Card, Flex, Heading, Text } from "@radix-ui/themes";
 import ReactMarkDown from "react-markdown";
 import AssigneeSelect from "./AssigneeSelect";
+import StatusSelect from "./StatusSelect";
 
 const IssueDetails = ({ issue }: { issue: Issue }) => {
   return (
@@ -15,9 +16,10 @@ const IssueDetails = ({ issue }: { issue: Issue }) => {
             {issue.createdAt.toDateString()}
           </Text>
         </Flex>
-        <Box>
+        <Flex gap="4">
+          <StatusSelect />
           <AssigneeSelect issue={issue} />
-        </Box>
+        </Flex>
       </Flex>
       <Card className="prose max-w-full" mt="4">
         <ReactMarkDown>{issue.description}</ReactMarkDown>
