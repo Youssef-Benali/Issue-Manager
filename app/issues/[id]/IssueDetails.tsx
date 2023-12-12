@@ -1,6 +1,6 @@
 import { IssueStatusBadge } from "@/app/components";
 import { Issue } from "@prisma/client";
-import { Box, Card, Flex, Heading, Text } from "@radix-ui/themes";
+import { Card, Flex, Heading, Text } from "@radix-ui/themes";
 import ReactMarkDown from "react-markdown";
 import AssigneeSelect from "./AssigneeSelect";
 import StatusSelect from "./StatusSelect";
@@ -17,7 +17,7 @@ const IssueDetails = ({ issue }: { issue: Issue }) => {
           </Text>
         </Flex>
         <Flex gap="4">
-          <StatusSelect />
+          <StatusSelect issue={issue} />
           <AssigneeSelect issue={issue} />
         </Flex>
       </Flex>
