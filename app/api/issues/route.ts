@@ -7,7 +7,7 @@ import authOptions from "@/app/auth/authOptions";
 export async function POST(request: NextRequest) {
   const session = await getServerSession(authOptions);
   if (!session) return NextResponse.json({}, { status: 401 });
-  
+
   const body = await request.json();
   const validation = issueSchema.safeParse(body);
 
@@ -23,3 +23,4 @@ export async function POST(request: NextRequest) {
 
   return NextResponse.json(newIssue, { status: 201 });
 }
+

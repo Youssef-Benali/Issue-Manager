@@ -1,9 +1,14 @@
 "use client";
 import { Select } from "@radix-ui/themes";
+import { useSession } from "next-auth/react";
 import React from "react";
 import { Toaster } from "react-hot-toast";
 
 const StatusSelect = () => {
+  const { status } = useSession();
+
+  if (status === "unauthenticated") return null;
+
   return (
     <>
       <Select.Root onValueChange={() => console.log("value changed")}>
